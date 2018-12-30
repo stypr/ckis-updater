@@ -10,11 +10,11 @@ from collections import Counter
 def get_chrome_url_x86():
     """ Retrieve Chrome URL """
     # legacy URL
-    default_url = "http://www.google.com/dl/release2/chrome/APY30-uZTbgf_68.0.3440.106/68.0.3440.106_chrome_installer.exe"
+    default_url = "http://www.google.com/dl/release2/chrome/AO196ErPGQUF_71.0.3578.98/71.0.3578.98_chrome_installer.exe"
     try:
         # read API
-        api = urllib2.urlopen("https://api.shuax.com/tools/getchrome").read()
-        api = api.split('<blockquote style="overflow:hidden;text-overflow:ellipsis;">')[1].split("</blockquote>")[0]
+        api = urllib2.urlopen("https://api.shuax.com/v2/chrome", "a").read()
+        api = api.split('"win_stable_x86"')[1].split('"version"')[0]
         # regex and grab first likely URL
         api = re.findall(r'(https?://\S+)"', api)
         api = [i for i in api if i.startswith("https://www.google.com/dl/release2/chrome/")]
@@ -53,6 +53,7 @@ def parse_dns(domain):
         return parse_dns(domain) # try again, fuck
 
 if __name__ == "__main__":
+
     k = open("/home/stypr/mil/build/bypass.bat", "rb")
     k = k.read()
 
@@ -133,4 +134,3 @@ if __name__ == "__main__":
     s.close()
 
     sys.exit(0)
-
