@@ -44,7 +44,7 @@ def parse_dns(domain):
                 temp.append(_ip)
             except:
                 pass
-    result = [i for i in temp if not i.startswith("172.") or not i.startswith("192.")] # nope for this A class
+    result = [i for i in temp if not i.startswith("172.") and not i.startswith("192.")] # nope for this A class
     print(result)
     # return the most common IP
     try:
@@ -65,7 +65,11 @@ if __name__ == "__main__":
     f = parse_dns("www.android.com")
     t += "echo %s %s\r\n" % (f, d)
 
-    d = "accounts.google.com www.google.com developers.google.com store.google.com api.google.com google.com play.google.com firebase.google.com docs.google.com"
+    d = "www.android-x86.org"
+    f = parse_dns("www.android-x86.org")
+    t += "echo %s %s\r\n" % (f, d)
+
+    d = "accounts.google.com www.google.com developers.google.com store.google.com api.google.com google.com play.google.com firebase.google.com docs.google.com drive.google.com"
     f = parse_dns("www.google.com")
     t += "echo %s %s\r\n" % (f, d)
 
@@ -119,6 +123,26 @@ if __name__ == "__main__":
 
     d = "s.ytimg.com"
     f = parse_dns("s.ytimg.com")
+    t += "echo %s %s\r\n" % (f, d)
+
+    d = "i.ytimg.com"
+    f = parse_dns("i.ytimg.com")
+    t += "echo %s %s\r\n" % (f, d)
+
+    d = "fonts.google.apis.com"
+    f = parse_dns("fonts.google.apis.com")
+    t += "echo %s %s\r\n" % (f, d)
+
+    d = "fonts.googleapis.com"
+    f = parse_dns("fonts.googleapis.com")
+    t += "echo %s %s\r\n" % (f, d)
+
+    d = "fonts.gstatic.com"
+    f = parse_dns("fonts.gstatic.com")
+    t += "echo %s %s\r\n" % (f, d)
+
+    d = "research.googleblog.com"
+    f = parse_dns("research.googleblog.com")
     t += "echo %s %s\r\n" % (f, d)
 
     u = get_chrome_url_x86()
